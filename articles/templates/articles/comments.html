@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'articles:index' %}">Back to articles</a>
+
+{% for comment in comments %}
+<h1>{{ comment.user }}</h1>
+<p>{{ comment.content }}</p><br>
+<p>{{ comment.pub_date }}</p>
+{% endfor %}
+
+{% endblock %}

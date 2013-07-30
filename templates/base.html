@@ -1,0 +1,17 @@
+<div id="userChecker">
+	{% block userChecker %}
+{% if user.is_authenticated %}
+<h1> Welcome Back {{ user.username }} </h1>
+<a href="{% url 'articles:logoutLink' %}">Logout</a>
+{% else %}
+<a href="{% url 'articles:signupView' %}">Signup!</a>
+<a href="{% url 'articles:loginView' %}">Login!</a>
+{% endif %}
+	{% endblock %}
+</div>
+
+<div id="content">
+	{% block content %}{% endblock %}
+</div>
+<br><br>
+<footer>Made by Andy</footer>

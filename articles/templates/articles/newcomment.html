@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'articles:index' %}">Back to articles</a>
+
+<h1> Add Comment to {{ article.title }}</h1>
+{% if user.is_authenticated %}
+{{ user.username }}
+<form action="{% url 'articles:addComment' article.id %}" method="post">
+	{% csrf_token %}
+    Comment
+	<input type="text" name="content" />
+	<input type="submit" value="Submit Comment" />
+</form>
+{% else %}
+<p>Log in to comment!</p>
+{% endif %}
+
+{% endblock %}

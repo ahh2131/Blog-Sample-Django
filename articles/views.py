@@ -37,17 +37,11 @@ def commentList(request, pk):
 	comments = article.comment_set.order_by('-pub_date')
 	return render(request, 'articles/comments.html', { 'comments':comments })
 
-def signupView(request):
-	return render(request, 'articles/signup.html')
-
 def signup(request):
 	user = User.objects.create_user(request.POST['username'], "NULL", request.POST['password'])
 	userCheck = authenticate(username=request.POST['username'], password=request.POST['password'])
 	login(request, userCheck)
 	return render(request, 'articles/signupSuccess.html', { 'username':request.POST['username'] })
-
-def loginView(request):
-	return render(request, 'articles/login.html')
 
 def loginLink(request):
 	form = AuthenticationForm(data=request.POST)
